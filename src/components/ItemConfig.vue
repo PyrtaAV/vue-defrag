@@ -13,11 +13,11 @@
         <p @click="toggleVisible">{{ $store.state.item.count }}</p>
           <div class="app__modal" v-if="isVisible">
             <button
-                class="btn"
+                class="modal__btn"
                 @click="$store.commit('incrementCount')"
             >+</button>
             <button
-                class="btn"
+                class="modal__btn"
                 @click="$store.commit('decrementCount')"
             >-</button>
           </div>
@@ -29,7 +29,6 @@
         >
       </div>
     </div>
-    
 </template>
 <script>
 
@@ -47,12 +46,12 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .app__item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 15px;
     }
     .app__modal {
       position: absolute;
@@ -64,24 +63,23 @@ export default {
       justify-content: space-between;
     }
     .checkbox {
-        &__item {
-            margin-right: 10px;
-        }
-        &__config {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-        &__color {
-
-            width: 30px;
-            height: 30px;
-            margin-left: 20px;
-            border: none;
-            background-color: transparent;
-        }
+      &__item {
+        margin-right: 10px;
+      }
+      &__config {
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+      &__color {
+        width: 30px;
+        height: 30px;
+        margin-left: 20px;
+        border: none;
+        background-color: transparent;
+      }
     }
-    .btn {
+    .modal__btn {
       background-color: transparent;
       border: 1px solid lightgray;
       width: 20px;
