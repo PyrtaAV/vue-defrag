@@ -23,7 +23,6 @@ import Item from '@/components/Item.vue'
 import ItemConfig from '@/components/ItemConfig.vue'
 import ItemView from '@/components/ItemView.vue'
 
-
 export default {
   name: 'App',
   components: {
