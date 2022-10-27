@@ -16,12 +16,13 @@
             type="text"
             class="checkbox__count"
             :value="count"
-            @change="changeCount">
+            @change="$emit('changeCount', $event.target.value, id)"
+        >
         <input
             type="color"
             class="checkbox__color"
             :value="color"
-            @change="changeColor"
+            @change="$emit('changeColor', $event.target.value, id)"
         >
       </div>
     </div>
@@ -38,21 +39,6 @@ export default {
     return({
       isVisible: false,
     })
-  },
-  computed: {
-
-  },
-  methods: {
-    changeColor(event) {
-      const newItem = this.$store.getters.getItemConfig(this.id)
-      newItem.color = `${event.target.value}`
-      this.$store.commit('changeItemConfigColor', newItem)
-    },
-    changeCount(event) {
-      const newItem = this.$store.getters.getItemConfig(this.id)
-      newItem.count = parseInt(event.target.value)
-      this.$store.commit('changeItemConfigCount', newItem)
-    }
   },
 }
 </script>
