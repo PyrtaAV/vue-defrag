@@ -1,35 +1,23 @@
 <template>
   <div class="app">
     <div class="app__panel app__panel-border">
-      <list-items>
-        <Item>
-          <ItemConfig></ItemConfig>
-        </Item>
-      </list-items>
+      <ListConfigItems />
     </div>
     <div class="app__panel">
-      <list-items>
-        <Item>
-          <ItemView></ItemView>
-        </Item>
-      </list-items>
+      <ListViewItems />
     </div>
   </div>
 </template>
 
 <script>
-import ListItems from '@/components/ListItems.vue'
-import Item from '@/components/Item.vue'
-import ItemConfig from '@/components/ItemConfig.vue'
-import ItemView from '@/components/ItemView.vue'
+import ListViewItems from '@/components/ListViewItems.vue'
+import ListConfigItems from "@/components/ListConfigItems"
 
 export default {
   name: 'App',
   components: {
-    ListItems, 
-    Item, 
-    ItemConfig, 
-    ItemView,
+    ListViewItems,
+    ListConfigItems,
   }
 }
 </script>

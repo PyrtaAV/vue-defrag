@@ -1,10 +1,8 @@
 import { createStore } from 'vuex'
-import { itemModule } from '@/store/itemModule'
-import { listModule } from "@/store/listModule";
+import { listConfigModule } from "@/store/listConfigModule";
 
 export default createStore({
   modules: {
-    item: itemModule,
-    list: listModule
+    listConfig: listConfigModule
   }
 })

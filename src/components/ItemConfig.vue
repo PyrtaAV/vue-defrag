@@ -1,49 +1,59 @@
 <template>
     <div class="app__item">
       <div class="app__checkbox">
-        <input
-            type="checkbox"
-            id="item__checkbox"
-            class="checkbox__item"
-            @change="$store.commit('toggleChecked')"
-        >
-        <label for="item__checkbox"> item 1</label>
+        <label>
+          <input
+              type="checkbox"
+              id="item__checkbox"
+              class="checkbox__item"
+              @change="$store.commit('toggleChecked')"
+          >
+          item {{ id }}
+        </label>
       </div>
       <div class="checkbox__config">
-        <p @click="toggleVisible">{{ $store.state.item.count }}</p>
-          <div class="app__modal" v-if="isVisible">
-            <button
-                class="modal__btn"
-                @click="$store.commit('incrementCount')"
-            >+</button>
-            <button
-                class="modal__btn"
-                @click="$store.commit('decrementCount')"
-            >-</button>
-          </div>
+        <input
+            type="text"
+            class="checkbox__count"
+            :value="count"
+            @change="changeCount">
         <input
             type="color"
             class="checkbox__color"
-            :value="$store.state.item.color"
-            @change="$store.commit('setColor', $event.target.value)"
+            :value="color"
+            @change="changeColor"
         >
       </div>
     </div>
 </template>
 <script>
-
 export default {
   name: 'ItemConfig',
+  props: {
+    count: Number,
+    color: String,
+    id: Number
+  },
   data() {
     return({
       isVisible: false,
     })
   },
+  computed: {
+
+  },
   methods: {
-    toggleVisible() {
-      this.isVisible = !this.isVisible
+    changeColor(event) {
+      const newItem = this.$store.getters.getItemConfig(this.id)
+      newItem.color = `${event.target.value}`
+      this.$store.commit('changeItemConfigColor', newItem)
+    },
+    changeCount(event) {
+      const newItem = this.$store.getters.getItemConfig(this.id)
+      newItem.count = parseInt(event.target.value)
+      this.$store.commit('changeItemConfigCount', newItem)
     }
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -51,7 +61,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 15px;
+      margin: 12px 15px;
     }
     .app__modal {
       position: absolute;
@@ -70,6 +80,10 @@ export default {
         display: flex;
         align-items: center;
         position: relative;
+      }
+      &__count {
+        border: none;
+        width: 30px;
       }
       &__color {
         width: 30px;

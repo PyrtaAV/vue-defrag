@@ -7,7 +7,7 @@
 import store from '@/store';
 
 export default {
-    name: 'ListItems',
+    name: 'ListViewItems',
         
 }
 </script>
